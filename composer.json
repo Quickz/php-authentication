@@ -1,0 +1,8 @@
+{
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Auth\\": "src/Auth/"
+        }
+    }
+}
