@@ -7,7 +7,7 @@ use PDO;
  * contains methods for communicating
  * with the database
  */
-class db
+class Db
 {
 
 	private static function conn()
@@ -35,7 +35,7 @@ class db
 
 	public static function query($string)
 	{
-		$pdo = db::conn();
+		$pdo = Db::conn();
 
 		$stmt = $pdo->prepare($string);
 		$stmt->execute();
