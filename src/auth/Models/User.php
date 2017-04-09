@@ -1,6 +1,7 @@
 <?php
 
 namespace Auth\Models;
+require "db.php";
 
 /**
  * contains user functionality
@@ -25,15 +26,18 @@ class User
 
     public function validateData()
     {
-        $testname = "potato";
-        $testpass = "123123";
-
-        $valid_name = $this->name == $testname;
-        $valid_pass = $this->pass == $testpass;
+        $user = $this->fetchData();
+        
+        $valid_name = $this->name == $user->name;
+        $valid_pass = password_verify($this->pass, $user->password);
 
         return $valid_name && $valid_pass;
     }
 
+    public function fetchData()
+    {
+        $user = db::query("SELECT * FROM users WHERE name='potato'");
+        return $user;
+    }
+
 }
-
-

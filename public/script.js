@@ -58,6 +58,7 @@ function request(fileName, callBack, formData)
 function loginResult(data)
 {
 	var response = data;
+	console.log(data);
 	if (response == "valid")
 		location.reload();
 	else
