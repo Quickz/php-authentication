@@ -21,10 +21,10 @@
 	<?php else : ?>
 		<h1>Welcome</h1>
 		<label>Username:</label>
-		<input id="username" type="text" name="username"><br>
+		<input id="username" type="text" name="username" autofocus><br>
 		<label>Password:</label>
 		<input id="password" type="password" name="password">
-		<input id="login" onclick="login()" type="submit" value="Login">
+		<button id="login" onclick="login()">Login</button>
 	<?php endif; ?>
 
 	<script src="script.js"></script>

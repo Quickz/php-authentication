@@ -5,7 +5,9 @@
 var username = document.getElementById("username");
 var password = document.getElementById("password");
 var loginBtn = document.getElementById("login");
-
+var enterDown = false;
+document.onkeydown = submitLogin;
+document.onkeyup = releaseEnter;
 
 /**
  * passes down the required data
@@ -33,7 +35,7 @@ function logout()
 
 
 /**
- * makes an ajax request
+ * makes an http request
  * fileName - destionation
  * callBack - function that's called after the request's completed
  * formData - data that needs to be passed
@@ -52,7 +54,7 @@ function request(fileName, callBack, formData)
 
 
 /**
- * result of login ajax request
+ * result of login http request
  *
  */
 function loginResult(data)
@@ -67,10 +69,31 @@ function loginResult(data)
 
 
 /**
- * result of logout ajax request
+ * result of logout http request
  *
  */
 function logoutResult()
 {
 	location.reload();
+}
+
+
+/**
+ *
+ *
+ */
+function submitLogin(e)
+{
+	if (e.keyCode == 13 && !enterDown &&
+		e.target.nodeName == "INPUT")
+	{
+		enterDown = true;
+		login();
+	}
+}
+
+
+function releaseEnter()
+{
+	enterDown = false;
 }
