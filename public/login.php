@@ -1,7 +1,7 @@
 <?php
 
 require __DIR__.'/../vendor/autoload.php';
-use Auth\Models\Auth;
+use Auth\Auth;
 
 if (isset($_POST['username']) && isset($_POST['password']))
 {

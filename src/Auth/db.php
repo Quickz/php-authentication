@@ -1,6 +1,6 @@
 <?php
 
-namespace Auth\Models;
+namespace Auth;
 use PDO;
 
 /**
