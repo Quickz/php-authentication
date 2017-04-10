@@ -13,7 +13,7 @@ class Auth
 	{
 		$user = new User($username);
 
-		if (Auth::validateData($username, $password, $user))
+		if (self::verifyData($user, $password))
 		{
 			session_start();
 			$_SESSION['user'] = $user;
@@ -49,14 +49,14 @@ class Auth
 		return $_SESSION['user'];
 	}
 
-    private static function validateData($name, $pass, $userObj)
+    private static function verifyData($user_obj, $pass)
     {
-        $user = $userObj->fetchData();
-        
-        $valid_name = $name == $user->name;
-        $valid_pass = password_verify($pass, $user->password);
+        $user = $user_obj->fetchData();
 
-        return $valid_name && $valid_pass;
+        // user doesn't exist
+        if (!$user) return false;
+
+        return password_verify($pass, $user->password);
     }
 
 }
