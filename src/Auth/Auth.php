@@ -59,4 +59,11 @@ class Auth
         return password_verify($pass, $user->password);
     }
 
+    public static function createUser($name, $pass)
+    {
+    	$user = new User($name);
+    	$status = $user->insertData($pass);
+    	return $status;
+    }
+    
 }

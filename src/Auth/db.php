@@ -39,8 +39,8 @@ class Db
 
 		$stmt = $pdo->prepare($string);
 		$stmt->execute();
-
-		return $stmt->fetchObject();
+		
+		return $stmt;
 	}
 
 }
