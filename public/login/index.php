@@ -20,9 +20,9 @@
 		<h1>Login</h1>
 		<form action="login.php" method="post">
 			<label>Username:</label>
-			<input type="text" name="username" autofocus><br>
+			<input type="text" name="username" autofocus required><br>
 			<label>Password:</label>
-			<input type="password" name="password">
+			<input type="password" name="password" required>
 			<input type="submit" value="Sign in">
 		</form>
 

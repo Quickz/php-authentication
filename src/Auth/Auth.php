@@ -61,8 +61,15 @@ class Auth
 
     public static function createUser($name, $pass)
     {
+    	$valid_name = preg_match('/^[a-zA-Z0-9]{3,25}$/', $name);
+		$valid_pass = preg_match('/^.{8,50}$/', $name);
+
+    	if (!$valid_name && !$valid_pass)
+    		return false;
+
     	$user = new User($name);
     	$status = $user->insertData($pass);
+
     	return $status;
     }
     
