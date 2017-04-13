@@ -23,29 +23,25 @@ class User implements iUser
 
     public function fetchData()
     {
-        $name = "'" . $this->name . "'";
-        $user = Db::query("SELECT * FROM users WHERE name=$name");
+        $data = ['name' => $this->name];
+        $sql = "SELECT * FROM users WHERE name=:name";
+        $user = Db::query($sql, $data);
         return $user->fetchObject();
     }
 
     public function insertData($pass)
     {
-        $name = $this->addQuotes($this->name);
         $pass = password_hash($pass, PASSWORD_DEFAULT);
-        $pass = $this->addQuotes($pass);
+        $data = ['name' => $this->name, 'pass' => $pass];
+        $sql = "INSERT INTO users (name, password)
+                VALUES (:name, :pass)";
 
         // name's taken
         if ($this->fetchData())
             return;
 
-        Db::query("INSERT INTO users (name, password)
-                        VALUES ($name, $pass)");
+        Db::query($sql, $data);
         return true;
-    }
-
-    private function addQuotes($str)
-    {
-        return "'" . $str . "'";
     }
 
 }

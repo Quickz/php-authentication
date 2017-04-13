@@ -33,12 +33,12 @@ class Db
 		}
 	}
 
-	public static function query($string)
+	public static function query($sql, $data)
 	{
 		$pdo = Db::conn();
 
-		$stmt = $pdo->prepare($string);
-		$stmt->execute();
+		$stmt = $pdo->prepare($sql);
+		$stmt->execute($data);
 		
 		return $stmt;
 	}
