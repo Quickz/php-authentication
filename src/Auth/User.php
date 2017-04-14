@@ -35,11 +35,6 @@ class User implements iUser
         $data = ['name' => $this->name, 'pass' => $pass];
         $sql = "INSERT INTO users (name, password)
                 VALUES (:name, :pass)";
-
-        // name's taken
-        if ($this->fetchData())
-            return;
-
         Db::query($sql, $data);
         return true;
     }
